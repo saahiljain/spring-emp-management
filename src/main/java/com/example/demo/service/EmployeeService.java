@@ -24,6 +24,30 @@ public class EmployeeService {
 		public  List<Employee> getAllEmployees() {
 			return employees;
 		}
+
+
+
+		public Employee saveEmployee(Employee employee) {
+			// TODO Auto-generated method stub
+			if(employee.getId()==0) {
+				employee.setId(employees.size()+1);
+			}
+			employees.add(employee); 
+			
+			return employee; 
+		}
+
+
+
+		public Employee findOneEmployee(int empId) {
+			// TODO Auto-generated method stub
+			for(Employee emp : employees) {
+				if(emp.getId() == empId) {
+					return emp; 
+				}
+			}
+			return null; 
+		}
 		
 
 }
