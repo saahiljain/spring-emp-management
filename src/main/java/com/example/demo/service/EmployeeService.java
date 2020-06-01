@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.demo.beans.Address;
 import com.example.demo.beans.Employee;
 
 @Component
@@ -14,9 +15,9 @@ public class EmployeeService {
 	public static  List<Employee> employees=new ArrayList <Employee>() ;
 		// TODO Auto-generated method stub
 		static {
-			employees.add(new Employee(1,"a",1,"a@gmail.com"));	
-			employees.add(new Employee(2,"b",2,"b@gmail.com"));
-			employees.add(new Employee(3,"c",3,"c@gmail.com"));
+			employees.add(new Employee(1,"a",1,"a@gmail.com",new Address("101", "mg road", "bangalore", "India")));	
+			employees.add(new Employee(2,"b",2,"b@gmail.com",new Address("102", "brigade road", "bangalore", "India")));
+			employees.add(new Employee(3,"c",3,"c@gmail.com",new Address("101", "food street", "bangalore", "India")));
 	}
 		
 		
