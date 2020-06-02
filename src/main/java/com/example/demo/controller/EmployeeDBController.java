@@ -45,4 +45,9 @@ public class EmployeeDBController {
 	public void deleteEmployee(@PathVariable int empId) {
 		employeeService.deleteEmployee(empId);
 	}
+	
+	@GetMapping("/db/emps/age/{empAge}")
+	public List<Employee> getEmployeeGreaterThanAge(@PathVariable int empAge){
+			return employeeService.getEmployeesByAge(empAge); 
+	}
 }

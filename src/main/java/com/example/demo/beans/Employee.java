@@ -1,13 +1,24 @@
 package com.example.demo.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "Employee")
 public class Employee {
-	
+	@javax.persistence.Id
+	@Column(name="ID")
 	private int id;
+	
+	@Column(name="name")
 	private String name;
+	@Column(name="empAge")
 	private int empAge;
+	@Column(name="email")
 	private String email;
-	private Address address;
 	
 	public Employee(int id, String name, int empAge, String email, Address address) {
 		super();
@@ -15,18 +26,12 @@ public class Employee {
 		this.name = name;
 		this.empAge = empAge;
 		this.email = email;
-		this.address = address;
+		
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", empAge=" + empAge + ", email=" + email + ", address="
-				+ address + "]";
+		return "Employee [id=" + id + ", name=" + name + ", empAge=" + empAge + ", email=" + email + "]";
 	}
 	public int getId() {
 		return id;
