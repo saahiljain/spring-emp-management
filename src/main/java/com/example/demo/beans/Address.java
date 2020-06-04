@@ -6,7 +6,7 @@ public class Address {
 	
 	public Address() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 	public Address(String houseNo, String street, String city, String country) {
 		super();
