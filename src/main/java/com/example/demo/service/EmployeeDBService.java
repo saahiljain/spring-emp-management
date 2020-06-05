@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.beans.Employee;
+import com.example.demo.exception.EmployeeAlreadyExists;
+import com.example.demo.exception.EmployeeDoesNotException;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
@@ -25,6 +26,12 @@ public class EmployeeDBService implements EmployeeService{
 
 	@Override
 	public Employee insertEmployee(Employee employee) {
+		final List<Employee> employees=employeeRepository.findAll();
+		final Boolean idexists=employees.stream().anyMatch(e->e.getId()==(employee.getId()));
+		if(Boolean.TRUE.equals(idexists)) {
+			throw new EmployeeAlreadyExists("Employee Already Exists");
+		}
+		
 		
 		return employeeRepository.save(employee);
 	}
@@ -32,8 +39,17 @@ public class EmployeeDBService implements EmployeeService{
 
 	@Override
 	public Optional<Employee> getEmployeeById(Integer empId) {
-		return employeeRepository.findById(empId);
+		Optional<Employee> employee=employeeRepository.findById(empId);
+		System.err.println(employee);
+		if(employee.isPresent()) {
+			return employee;
+			
+		}
+		else {
+			throw new EmployeeDoesNotException("Employee Does not exist in the DataBase");
+		}
 	}
+	
 
 
 	@Override
