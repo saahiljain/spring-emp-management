@@ -46,7 +46,7 @@ public class Employee {
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public void setEmpAge(int empAge) {
 		this.empAge = empAge;

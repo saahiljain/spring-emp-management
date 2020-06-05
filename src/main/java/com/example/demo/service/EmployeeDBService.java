@@ -1,12 +1,12 @@
 package com.example.demo.service;
 
-import java.util.IntSummaryStatistics;
+
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.beans.Employee;
@@ -43,7 +43,7 @@ public class EmployeeDBService implements EmployeeService{
 	public Optional<Employee> getEmployeeById(Integer empId) {
 		
 		Optional<Employee> employee=employeeRepository.findById(empId);
-		System.out.println(employee);
+		System.err.println(employee);
 		if(employee.isPresent()) {
 			return employee;
 			
@@ -56,14 +56,13 @@ public class EmployeeDBService implements EmployeeService{
 
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return employeeRepository.save(employee); 
 	}
 
 
 	@Override
 	public void deleteEmployee(int empId) {
-		// TODO Auto-generated method stub
+
 		employeeRepository.deleteById(empId);
 	}
 	
