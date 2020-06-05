@@ -49,34 +49,16 @@ public class EmployeeDBService implements EmployeeService{
 			throw new EmployeeDoesNotException("Employee Does not exist in the DataBase");
 		}
 	}
-	
-
-
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
 		return employeeRepository.save(employee); 
 	}
-
-
 	@Override
 	public void deleteEmployee(int empId) {
-		// TODO Auto-generated method stub
 		employeeRepository.deleteById(empId);
 	}
-
-
-
-//	@Override
-//	public List<Employee> getEmployeesByAge(int empAge) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
-
 	@Override
 	public List<Employee> getEmployeesByAge(int empAge) {
-		// TODO Auto-generated method stub
 		return employeeRepository.findByAge(empAge); 
 	}
 
