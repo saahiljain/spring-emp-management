@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.json.JSONException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public interface EmployeeService {
 
 
 
-	public Optional<Employee> getEmployeeById(Integer empId);
+	public Optional<Employee> getEmployeeById(Integer empId) throws JSONException;
 
 
 

@@ -3,10 +3,13 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.demo.beans.Employee;
+import com.example.demo.beans.Salary;
 import com.example.demo.exception.EmployeeAlreadyExists;
 import com.example.demo.exception.EmployeeDoesNotException;
 import com.example.demo.repo.EmployeeRepository;
@@ -17,6 +20,8 @@ public class EmployeeDBService implements EmployeeService{
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	
+	@Autowired
+	private WebClient.Builder webClientBuilder;
 
 	@Override
 	public List<Employee> getAllEmployees(){
@@ -42,6 +47,13 @@ public class EmployeeDBService implements EmployeeService{
 		Optional<Employee> employee=employeeRepository.findById(empId);
 		System.err.println(employee);
 		if(employee.isPresent()) {
+			System.out.println("http://localhost:8100/db/salary/"+employee.get().getId());
+			Salary s=webClientBuilder.build().get().uri("http://localhost:8100/db/salary/"+employee.get().getId()).retrieve().bodyToMono(Salary.class).block();
+			System.err.println("saahil");
+			System.out.println("web-client-output"+s);
+			JSONObject obj=new JSONObject();
+//			obj.put("Employee",employee);
+//			obj.put("Salary",s);
 			return employee;
 			
 		}
